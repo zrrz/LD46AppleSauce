@@ -9,7 +9,10 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
 
     [SerializeField]
-    private float speed = 12f;
+    private float walkSpeed = 3.7f;
+
+    [SerializeField]
+    private float sprintSpeed = 7.1f;
 
     [SerializeField]
     private float gravity = -9.81f;
@@ -29,13 +32,13 @@ public class PlayerMovement : MonoBehaviour
 
     PlayerInput playerInput;
 
-    private void Start()
-    {
-        playerInput = PlayerInput.Instance;
-    }
-
     void Update()
     {
+        if (playerInput == null)
+        {
+            playerInput = PlayerInput.Instance;
+        }
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if(isGrounded && velocity.y < 0)
@@ -43,12 +46,15 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
+        //TODO check if diagonal movement is faster
         float x = playerInput.moveHorizontal.Value;
         float z = playerInput.moveVertical.Value;
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);
+        bool sprinting = playerInput.sprint.IsPressed;
+
+        controller.Move(move * (sprinting ? sprintSpeed : walkSpeed) * Time.deltaTime);
 
         if(playerInput.jump.IsPressed && isGrounded)
         {

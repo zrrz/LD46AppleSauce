@@ -24,15 +24,9 @@ public class MouseLook : MonoBehaviour
     {
         if(playerInput == null)
         {
-            if(PlayerInput.Instance != null)
-            {
-                playerInput = PlayerInput.Instance;
-            } 
-            else
-            {
-                return;
-            }
+            playerInput = PlayerInput.Instance;
         }
+
         float mouseX = playerInput.lookHorizontal.Value * mouseSensitivity * Time.deltaTime;
         float mouseY = playerInput.lookVertical.Value * mouseSensitivity * Time.deltaTime;
 
