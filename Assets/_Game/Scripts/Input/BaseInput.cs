@@ -54,4 +54,5 @@ public class BaseInput : MonoBehaviour
     public ButtonAction melee;
     public ButtonAction reload;
     public ButtonAction interact;
+    public ButtonAction jump;
 }

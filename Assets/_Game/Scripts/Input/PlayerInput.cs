@@ -33,21 +33,21 @@ public class PlayerInput : BaseInput
             case RewiredConsts.Action.MoveVertical:
                 moveVertical = new AxisAction(data);
                 break;
-            case RewiredConsts.Action.Jump:
-                moveVertical = new AxisAction(data);
+            case RewiredConsts.Action.LookHorizontal:
+                lookHorizontal = new AxisAction(data);
                 break;
-            //case RewiredConsts.Action.LookHorizontal:
-            //    lookHorizontal = new AxisAction(data);
-            //    break;
-            //case RewiredConsts.Action.LookVertical:
-            //    lookVertical = new AxisAction(data);
-            //    break;
-            //case RewiredConsts.Action.Sprint:
-            //    sprint = new ButtonAction(data);
-            //    break;
-            //case RewiredConsts.Action.Interact:
-            //    interact = new ButtonAction(data);
-            //    break;
+            case RewiredConsts.Action.LookVertical:
+                lookVertical = new AxisAction(data);
+                break;
+            case RewiredConsts.Action.Sprint:
+                sprint = new ButtonAction(data);
+                break;
+            case RewiredConsts.Action.Interact:
+                interact = new ButtonAction(data);
+                break;
+            case RewiredConsts.Action.Jump:
+                jump = new ButtonAction(data);
+                break;
             default:
                 break;
         }
